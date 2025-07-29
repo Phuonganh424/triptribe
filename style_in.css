@@ -1,0 +1,867 @@
+* { 
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  body {
+    background-image: url('imgs/3d2c64ed52ed0a898f787ece8548f502.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
+    padding: 60px 20px;
+    position: relative;
+    overflow-x: hidden;
+  }
+  
+  body::before {
+    content: "";
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.15);  /* lớp xám nhẹ */
+    backdrop-filter: blur(1px);     /* nền mờ */
+    z-index: -1;
+  }
+  
+  /* Navbar */
+  .logo {
+    font-family: 'Lobster', cursive;
+    font-size: 40px;
+    color: #BFECFF;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .navbar {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 12px 20px;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    overflow: hidden;
+  }
+  
+  .navbar-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 100%;
+    margin: auto;
+    width: 100%;
+    gap: 20px;
+  }
+  
+  .nav-scroll-area {
+    flex: 1;
+    overflow-x: auto;
+    scrollbar-width: thin;
+    scrollbar-color: #888 transparent;
+    -webkit-overflow-scrolling: touch;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .nav-scroll-area::-webkit-scrollbar {
+    height: 6px;
+  }
+  .nav-scroll-area::-webkit-scrollbar-thumb {
+    background: #bbb;
+    border-radius: 4px;
+  }
+  .nav-scroll-area::-webkit-scrollbar-thumb:hover {
+    background: #999;
+  }
+  
+  .nav-links {
+    display: flex;
+    list-style: none;
+    gap: 24px;
+    white-space: nowrap;
+    padding: 8px 0;
+    margin: 0;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+    padding: 6px 10px;
+    transition: border-bottom 0.2s;
+  }
+  
+  .nav-links a.active {
+    color: #CDC1FF;
+    border-bottom: 2px solid #CDC1FF;
+  }
+
+  .profile-icon img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    transition: transform 0.2s ease;
+  }
+  
+  .profile-icon img:hover {
+    transform: scale(1.1);
+  }  
+
+  .footer {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 40px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 40px;
+    box-sizing: border-box;
+    margin-top: 80px;
+  }
+  
+  .footer .footer-social {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  
+  .footer .footer-social a img {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease;
+  }
+  
+  .footer .footer-social a:hover img {
+    transform: scale(1.1);
+  }
+  
+  .footer h4 {
+    font-size: 20px;
+    margin-bottom: 8px;
+    color: #CDC1FF;
+  }
+  
+  .footer p {
+    font-size: 16px;
+    margin: 4px 0;
+  }
+  
+  .footer .copyright {
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+    font-size: 13px;
+    color: #bbb;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 10px;
+  }
+  
+  .planning-container {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    border-radius: 16px;
+    color: white;
+    max-width: 550px;
+    margin: 120px auto;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+  
+  .planning-container h2 {
+    color: #CDC1FF;
+    font-size: 28px;
+    margin-bottom: 24px;
+    font-weight: bold;
+  }
+
+  .planning-container h3 {
+    font-size: 16px;
+    font-weight: normal; /* tắt in đậm */
+    margin-top: 16px;
+  }  
+  
+  .planning-container label {
+    display: block;
+    margin-top: 16px;
+    margin-bottom: 6px;
+    font-weight: 500;
+    font-size: 15px;
+  }
+  
+  .planning-container input,
+  .planning-container textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    background-color: #fff;
+    color: #333;
+  }
+
+  .planning-container textarea {
+    resize: vertical;
+  }  
+  
+  .planning-container input::placeholder,
+  .planning-container textarea::placeholder {
+    color: #888;
+  }
+  
+  #create-plan-btn {
+    background-color: #CDC1FF; 
+    color: black;
+    border: none;
+    padding: 14px 20px;
+    width: 100%;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 24px;
+    transition: background 0.3s ease;
+  }
+  
+  #create-plan-btn:hover {
+    background-color: #CDC1FF;
+  }
+  
+  /* Container chính */
+.view-plan-container {
+  max-width: 1300px;
+  margin: 100px auto 40px auto;
+  background: rgba(255, 255, 255, 0.95);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Tiêu đề */
+.view-plan-container h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Danh sách kế hoạch */
+#plans-list {
+  font-size: 16px;
+  color: #444;
+}
+
+/* Mỗi kế hoạch */
+.plan-card {
+  background: #f9f9f9;
+  border-left: 4px solid #7c3aed;
+  margin-bottom: 20px;
+  padding: 15px 20px;
+  border-radius: 8px;
+  transition: background 0.3s ease;
+}
+
+.plan-card:hover {
+  background: #f3e8ff;
+}
+
+.plan-card h3 {
+  margin: 0 0 10px 0;
+  color: #222;
+}
+
+.plan-card p {
+  margin: 4px 0;
+  color: #555;
+  font-size: 15px;
+}
+
+.plan-actions {
+  display: flex;
+  justify-content: flex-end; /* đẩy sang phải */
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.plan-actions img {
+  width: 23px;
+  height: 23px;
+  opacity: 0.8;
+  transition: 0.2s ease;
+  object-fit: contain;
+}
+
+.edit-container {
+    background: rgba(0, 0, 0, 0.5);
+    padding: 40px;
+    border-radius: 16px;
+    color: white;
+    max-width: 960px;
+    margin: 120px auto;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  }
+  
+  .edit-container h2 {
+    color: #CDC1FF;
+    font-size: 28px;
+    margin-bottom: 24px;
+    font-weight: bold;
+  }
+
+  .edit-container h3 {
+    font-size: 16px;
+    font-weight: normal; /* tắt in đậm */
+    margin-top: 16px;
+  }  
+  
+  .edit-container label {
+    display: block;
+    margin-top: 16px;
+    margin-bottom: 6px;
+    font-weight: 500;
+    font-size: 15px;
+  }
+  
+  .edit-container input,
+  .edit-container textarea {
+    width: 100%;
+    padding: 12px 14px;
+    border: none;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-size: 15px;
+    background-color: #fff;
+    color: #333;
+  }
+
+  .edit-container textarea {
+    resize: vertical;
+  }  
+  
+  .edit-container input::placeholder,
+  .edit-container textarea::placeholder {
+    color: #888;
+  }
+
+  .edit-container .date-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.edit-container .date-row > div {
+  flex: 1;
+}
+
+.expense-wrapper {
+  background: white;
+  color: black;
+  padding: 24px;
+  border-radius: 12px;
+  margin-top: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.expense-wrapper input {
+  background: #fff;
+  color: #000;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 14px;
+}
+
+.expense-table thead th {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.expense-table td,
+.expense-table th {
+  padding: 14px 10px;
+  vertical-align: middle;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.expense-table td:first-child,
+.expense-table th:first-child {
+  text-align: center;
+  width: 40px;
+}
+
+#add-expense {
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+#add-expense:hover {
+  background-color: #f0f0f0;
+}
+
+.remove-expense {
+  background: transparent;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trash-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.remove-expense:hover .trash-icon {
+  transform: scale(1.1);
+}
+
+.expense-table td {
+  height: 60px;
+  padding: 0 8px;
+  vertical-align: middle;
+}
+
+.expense-table td input,
+.expense-table td select {
+  height: 38px;
+  line-height: 38px;
+  padding: 6px 12px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+  color: #000;
+  width: 100%;
+  box-sizing: border-box;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  display: block;
+  margin: auto 0;
+  text-align: left;
+}
+
+.custom-select-wrapper {
+  position: relative;
+  width: 100%;
+  min-width: 120px;
+}
+
+.custom-select-display {
+  width: 100%;
+  height: 38px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background: #fff;
+  color: #000;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;    /* ✅ Giữa chiều dọc tuyệt đối */
+  cursor: pointer;
+  user-select: none;
+}
+
+.custom-select-options {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 0 0 6px 6px;
+  max-height: 210px;
+  overflow-y: auto;
+  z-index: 10;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.custom-select-options li {
+  padding: 10px 14px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.custom-select-options li:hover,
+.custom-select-options li.selected {
+  background: #f3e8ff;
+  color: #7c3aed;
+}
+
+/* Giao diện từng thẻ kế hoạch */
+#plans-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 24px 20px;
+  margin-top: 30px;
+}
+
+.plan-card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 16px rgba(50,50,93,0.08);
+  padding: 16px 18px;
+  display: flex;
+  gap: 16px;
+  min-height: 180px;
+  transition: box-shadow 0.2s;
+}
+
+.plan-card:hover {
+  box-shadow: 0 6px 24px rgba(124, 58, 237, 0.13);
+}
+
+.plan-img img {
+  border-radius: 8px;
+  width: 120px;
+  height: 100px;
+  object-fit: cover;
+}
+
+/* ✅ SỬA: Hiển thị các dòng thông tin dạng hàng ngang */
+.plan-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.plan-info h3 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0 0 5px 0;
+  color: #222;
+  line-height: 1.2;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.plan-info p {
+  font-size: 15px;
+  margin: 0;
+  color: #444;
+  line-height: 1.4;
+  white-space: normal;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.plan-actions {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.plan-actions button {
+  background: #cdc1ff;
+  border: none;
+  color: #2d1a4e;
+  padding: 7px 15px;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.plan-actions button:hover {
+  background: #b8a0f8;
+  color: #522b88;
+}
+
+.plan-inline {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap; /* Nếu text quá dài sẽ tự xuống hàng */
+  font-size: 15px;
+}
+
+.plan-inline > span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 180px; /* Điều chỉnh chiều dài tối đa từng trường */
+}
+
+.plan-name {
+  font-weight: bold;
+  color: #222;
+}
+
+/* ✅ SỬA: Cách hiển thị từng dòng (label + nội dung) */
+.plan-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  padding: 4px 0;
+  font-size: 15px;
+  color: #444;
+  border-bottom: 1px solid #eee;
+  line-height: 1.6;
+}
+
+.plan-row .label {
+  min-width: 70px;
+  width: 90px;
+  font-weight: bold;
+  color: #7c3aed;
+  flex-shrink: 0;
+}
+
+.plan-row .value {
+  flex: 1;
+  margin-left: 40px;      /* ✅ tạo khoảng cách lớn hơn */
+  word-break: break-word;
+  white-space: normal;
+}
+
+/* ===== PLAN DETAIL PAGE ===== */
+.detail-view-plan-container {
+  display: flex;
+  justify-content: center;     /* ✅ căn giữa ngang */
+  align-items: flex-start;
+  padding: 40px 20px;
+}
+
+.detail-view-plan-container h2 {
+  font-size: 28px;
+  margin-bottom: 24px;
+  color: #333;
+  text-align: center;
+}
+
+.detail-view-plan-container .plan-info {
+  background: rgba(255, 255, 255, 0.92);
+  padding: 24px 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  margin-bottom: 30px;
+  line-height: 1.6;
+  color: #222;
+  margin-top: 60px;
+  max-width: 900px;   
+}
+
+.detail-view-plan-container .plan-info h3 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #7c3aed;
+  margin-bottom: 10px;
+}
+
+.detail-view-plan-container .plan-info p {
+  font-size: 16px;
+  margin: 6px 0;
+  color: #444;
+}
+
+#note-detail-list {
+  margin-top: 10px;
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+#note-detail-list li {
+  margin-bottom: 6px;
+  color: #333;
+  font-size: 15px;
+}
+
+/* Bảng chi phí */
+.detail-expense-wrapper {
+  background: #fff;
+  padding: 20px 24px;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+}
+
+.detail-expense-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.detail-expense-table th,
+.detail-expense-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+
+.detail-expense-table thead {
+  background-color: #f3e8ff;
+  color: #333;
+}
+
+.detail-expense-table tfoot {
+  font-weight: bold;
+  background: #fafafa;
+}
+
+#total-amount {
+  color: #7c3aed;
+  font-weight: bold;
+}
+
+/* Nút quay lại */
+.view-plan-container button {
+  background: #cdc1ff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 15px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.view-plan-container button:hover {
+  background: #b8a0f8;
+}
+
+.detail-total-display {
+  text-align: right;
+  margin-top: 12px;
+  font-weight: bold;
+  font-size: 16px;
+  padding-right: 24px;
+}
+
+.detail-total-display span {
+  margin-left: 10px;
+  color: #7c3aed;
+}
+
+.date-group {
+  display: flex;
+  gap: 130px; /* khoảng cách giữa 2 dòng */
+  flex-wrap: wrap; /* tự xuống dòng nếu màn nhỏ */
+}
+
+.back-button {
+  background-color: #e2d4ff;
+  color: #000;
+  font-weight: bold;
+  border: none;
+  border-radius: 12px;
+  padding: 10px 18px;
+  font-size: 17px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.back-button:hover {
+  background-color: #d3bfff;         /* hover tím đậm hơn tí */
+}
+
+.checklist-btn {
+  margin-top: 24px;
+  padding: 10px 24px;
+  font-size: 15px;
+  font-weight: bold;
+  background-color: white;
+  color: #1f1f1f;
+  border: 1px solid #a178ff;
+  border-radius: 12px;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition: all 0.2s ease-in-out;
+
+  display: block;
+  width: fit-content;           /* ✅ Gọn lại vừa chữ */
+  margin-left: auto;            /* ✅ Căn giữa */
+  margin-right: auto;
+}
+
+/* --- Popup overlay chung --- */
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3); /* nền mờ */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* --- Nội dung trong popup --- */
+.popup-content {
+  background-color: white;
+  border-radius: 12px;
+  padding: 30px;
+  max-width: 800px;
+  width: 90%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  animation: popupFadeIn 0.3s ease-in-out;
+}
+
+/* --- Ẩn popup ban đầu --- */
+.hidden {
+  display: none;
+}
+
+/* --- Hiệu ứng hiện ra --- */
+@keyframes popupFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* --- Nút trong popup --- */
+.popup-content button {
+  margin-top: 16px;
+  margin-right: 10px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid #aaa;
+  background-color: #f9f9f9;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.expense-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding: 0 10px;
+}
+
+.add-expense-btn,
+.save-expense-btn {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: white;
+  cursor: pointer;
+  font-weight: bold;
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TripTribe - Plan Details</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style_in.css" />
+</head>
+<body>
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="intro.html" class="logo">TripTribe</a>
+      <div class="nav-scroll-area">
+        <ul class="nav-links">
+          <li><a class="active" href="intro.html">Home</a></li>
+          <li><a href="#">Features</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="profile-icon">
+        <a href="profile.html"><img src="imgs/profile.jpg" alt="Profile" /></a>
+      </div>
+    </div>
+  </nav>
+
+  <div class="detail-view-plan-container">
+    <div class="plan-info">
+      <h2>Plan Details</h2>
+      <h3 id="plan-name"></h3>
+      <p><strong>Destination:</strong> <span id="plan-location"></span></p>
+      <div class="date-group">
+        <p><strong>Start Date:</strong> <span id="plan-start"></span></p>
+        <p><strong>End Date:</strong> <span id="plan-end"></span></p>
+      </div>
+      <p><strong>Description:</strong> <span id="plan-description"></span></p>
+      <p><strong>Detailed Itinerary:</strong></p>
+      <ul id="note-detail-list"></ul>
+      <p><strong>Trip Expenses</strong></p>
+      <div class="detail-expense-wrapper">
+        <table class="detail-expense-table">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Expense Category</th>
+              <th>Description</th>
+              <th>Amount</th>
+              <th>Note</th>
+            </tr>
+          </thead>
+          <tbody id="expense-body"></tbody>
+        </table>
+        <p class="detail-total-display">Total Expense: <span id="total-amount">0</span></p>
+      </div>
+
+      <!-- Checklist Button -->
+      <button id="open-checklist" class="checklist-btn">Packing Checklist</button>
+
+      <!-- Checklist popup -->
+      <div id="checklist-popup" class="popup hidden">
+        <div class="popup-content">
+          <h3 class="section-title">Packing Checklist</h3>
+
+          <div class="expense-wrapper">
+            <table id="checklist-table" class="expense-table">
+              <thead>
+                <tr>
+                  <th>No.</th>
+                  <th>Item</th>
+                  <th>Quantity</th>
+                  <th>Prepared</th>
+                  <th></th> <!-- delete column -->
+                </tr>
+              </thead>
+              <tbody id="checklist-body">
+                <!-- Rows added dynamically by JS -->
+              </tbody>
+            </table>
+
+            <!-- Footer buttons -->
+            <div class="expense-footer">
+              <button id="add-checklist-item" class="add-expense-btn">+</button>
+              <button id="ok-checklist" class="save-expense-btn">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="text-align: right; margin-top: 20px;">
+        <button class="back-button" onclick="window.location.href='view_plan.html'">Back</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="footer-social">
+      <a href="#"><img src="imgs/733547.png" alt="Facebook" /></a>
+      <a href="#"><img src="imgs/5968958.png" alt="X" /></a>
+      <a href="#"><img src="imgs/2111463.png" alt="Instagram" /></a>
+    </div>    
+    <div>
+      <h4>Quick Links</h4>
+      <p>Home</p>
+      <p>Features</p>
+      <p>Contact</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p>Email: support@triptribe.com</p>
+      <p>Phone: +84 123 456 789</p>
+    </div>
+    <div class="copyright">
+      © 2025 TripTribe. All rights reserved.
+    </div>    
+  </div>
+
+  <script src="plan_detail.js"></script>
+</body>
+</html>

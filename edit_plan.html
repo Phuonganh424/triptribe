@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TripTribe - Edit Plan</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style_in.css" />
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="intro.html" class="logo">TripTribe</a>
+      <div class="nav-scroll-area">
+        <ul class="nav-links">
+          <li><a class="active" href="intro.html">Home</a></li>
+          <li><a href="#">Features</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+      <div class="profile-icon">
+        <a href="profile.html"><img src="imgs/profile.jpg" alt="Profile" /></a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <div class="edit-container">
+    <h2>Edit Travel Plan</h2>
+    <form id="edit-plan-form">
+      <label for="trip-name">Plan Name</label>
+      <input type="text" id="trip-name" required />
+
+      <label for="trip-location">Destination</label>
+      <input type="text" id="trip-location" placeholder="Example: Da Nang, Hue..." />
+      
+      <div class="date-row">
+        <div>
+            <label for="trip-date">Start Date</label>
+            <input type="date" id="trip-date" required />
+        </div>
+        <div>
+            <label for="trip-end-date">End Date</label>
+            <input type="date" id="trip-end-date" required />
+        </div>
+      </div>
+
+      <label for="trip-description">Description</label>
+      <input type="text" id="trip-description" placeholder="Example: Family trip to Hue..." />
+
+      <label for="trip-detail">Detailed Plan</label>
+      <textarea id="trip-detail" placeholder="Add your detailed itinerary..."></textarea>
+
+      <h3>Trip Expenses</h3>
+      <div class="expense-wrapper">
+        <table id="expense-table" class="expense-table">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>Expense Category</th>
+              <th>Description</th>
+              <th>Amount</th>
+              <th>Note</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody id="expense-body">
+            <tr>
+              <td>1</td>
+               <td>
+                <div class="custom-select-wrapper">
+                  <div class="custom-select-display">-- Select --</div>
+                    <ul class="custom-select-options" style="display:none;">
+                      <li>Transport</li>
+                      <li>Accommodation</li>
+                      <li>Food & Drinks</li>
+                      <li>Tickets & Activities</li>
+                      <li>Shopping</li>
+                      <li>Utilities</li>
+                      <li>Emergency</li>
+                    </ul>
+                    <input type="hidden" name="expense-type" class="custom-select-value">
+                </div>
+              </td>
+
+              <td><input type="text" class="expense-desc" placeholder="Description..." /></td>
+              <td><input type="number" class="expense-amount" placeholder="0" /></td>
+              <td><input type="text" class="expense-note" placeholder="Optional note..." /></td>
+              <td><button type="button" class="remove-expense" title="Delete">
+                  <img src="imgs/trash.png" alt="Delete" class="trash-icon" />
+                  </button>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="5" style="text-align: left;">
+                <button type="button" id="add-expense">+</button>
+              </td>
+              <td style="font-weight: bold;">Total:</td>
+              <td id="total-amount">0</td>
+              <td></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <button type="submit" id="create-plan-btn">Save Changes</button>
+    </form>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    <div class="footer-social">
+      <a href="#"><img src="imgs/733547.png" alt="Facebook" /></a>
+      <a href="#"><img src="imgs/5968958.png" alt="X" /></a>
+      <a href="#"><img src="imgs/2111463.png" alt="Instagram" /></a>
+    </div>    
+    <div>
+      <h4>Quick Links</h4>
+      <p>Home</p>
+      <p>Features</p>
+      <p>Contact</p>
+    </div>
+    <div>
+      <h4>Contact</h4>
+      <p>Email: triptribe@support.com</p>
+      <p>Phone: +84 123 456 789</p>
+    </div>
+    <div class="copyright">
+      © 2025 TripTribe. All rights reserved.
+    </div>    
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
